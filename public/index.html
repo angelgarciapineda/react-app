@@ -18,8 +18,16 @@
         window.addEventListener("load", () => {
           navigator.serviceWorker
             .register("./serviceworker.js")
-            .then((reg) => console.log("Success: ", reg.scope))
-            .catch((err) => console.log("Failure: ", err));
+            .then((reg) => {
+              console.log("Success: ", reg.scope);
+              alert(
+                "Registro de Service Worker exitoso con alcance: " + reg.scope
+              );
+            })
+            .catch((err) => {
+              console.log("Failure: ", err);
+              alert("Error en el registro de ServiceWorker: " + error);
+            });
         });
       }
     </script>

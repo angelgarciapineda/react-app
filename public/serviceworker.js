@@ -18,7 +18,10 @@ self.addEventListener("install", (event) => {
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then(() => {
-      return fetch(event.request).catch(() => caches.match("offline.html"));
+      return fetch(event.request).catch((error) => {
+        console.log("error para evento fetch ", error);
+        caches.match("offline.html");
+      });
     })
   );
 });
@@ -40,4 +43,3 @@ self.addEventListener("activate", (event) => {
     )
   );
 });
-
