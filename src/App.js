@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import "./App.css";
 import { fetchNasa } from "./api/fetchNasa";
-import Select from "react-select";
 import BarWave from "react-cssfx-loading/lib/BarWave";
 
 const queryInitialState = {
@@ -49,21 +48,35 @@ function App() {
     <div className="main-container">
       <h1>NASA Mars Rover Photos</h1>
       <div className="main-inputs">
-        <input
-          type="number"
-          placeholder="Insert a sol"
-          value={query.sol}
-          onChange={(e) => setQuery({ ...query, sol: e.target.value })}
-          className="search"
-        />
-        <Select
-          value={query.camera}
-          onChange={(obj) => {
-            setQuery({ ...query, camera: obj.value });
-          }}
-          options={options}
-          width="300px"
-        />
+        <label style={{ color: "white" }}>
+          Ingresa un número por ejemplo 1000
+          <br />
+          <input
+            type="number"
+            placeholder="100, 1000, etc"
+            value={query.sol}
+            onChange={(e) => setQuery({ ...query, sol: e.target.value })}
+            className="search"
+          />
+        </label>
+        <label style={{ color: "white" }}>
+          Selecciona una cámara:
+          <br />
+          <select
+            name="cars"
+            id="cars"
+            onChange={(obj) => {
+              setQuery({ ...query, camera: obj.value });
+            }}
+            className="search"
+          >
+            {options.map((option, index) => (
+              <option value={option.value} key={index}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </label>
         <input
           type="submit"
           value="Search"
@@ -88,6 +101,7 @@ function App() {
                 className="city-icon"
                 src={item.img_src}
                 alt={item.earth_date}
+                srcSet="–min 0 –max 63 -a end-usage=q -a cq-level=32 -a tune=ssim -a deltaq-mode=3 -a sharpness=3 -y 420"
               />
             </div>
           </div>
