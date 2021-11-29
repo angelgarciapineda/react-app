@@ -101,7 +101,6 @@ function App() {
                 className="city-icon"
                 src={item.img_src}
                 alt={item.earth_date}
-                srcSet="–min 0 –max 63 -a end-usage=q -a cq-level=32 -a tune=ssim -a deltaq-mode=3 -a sharpness=3 -y 420"
               />
             </div>
           </div>
